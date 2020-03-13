@@ -20,11 +20,16 @@ namespace CardGames
 		private static void HandleUserInput(Snap myGame)
 		{
 			//Fetch the next batch of UI interaction
-			SwinGame.ProcessEvents();
+			//SwinGame.ProcessEvents();
 
-			if (SwinGame.KeyTyped (KeyCode.vk_SPACE))
+			//if (SwinGame.KeyTyped (KeyCode.vk_SPACE))
+			//{
+			//myGame.FlipNextCard ();
+			//}
+			SwinGame.ProcessEvents();
+			if (SwinGame.KeyTyped(KeyCode.vk_SPACE))
 			{
-				myGame.FlipNextCard ();
+				myGame.Start();
 			}
 		}
 
