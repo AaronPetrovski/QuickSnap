@@ -13,7 +13,7 @@ namespace CardGames.GameLogic
 	public class Deck
 	{
         private readonly Card[] 	_cards = new Card[52];
-        private int 	_topCard;
+        private int _topCard;
      
 		/// <summary>
 		/// Creates a new Deck with 52 Cards. The first card
@@ -54,14 +54,23 @@ namespace CardGames.GameLogic
 		/// </summary>
 		public void Shuffle()
 		{
-			//TODO: implement shuffle!
+			for (int i = 0; i < 52; i++) { if (_cards[i].FaceUp) _cards[i].TurnOver(); }
+
+			Random rnd = new Random();
+
+			// for each card (no need to shuffle last card) for(int i = 0; i < 52 - 1; i++) { // pick a random index int rndIdx = rnd.Next(52 - i); 
+
+			Card temp = _cards[i]; _cards[i] = _cards[i + rndIdx]; _cards[i + rndIdx] = temp;
+			_topCard = 0;
 		}
-        
-		/// <summary>
-		/// Takes a card from the top of the Deck. This will return
-		/// <c>null</c> when there are no cards remaining in the Deck.
-		/// </summary>
-        public Card Draw()
+	}
+
+
+	/// <summary>
+	/// Takes a card from the top of the Deck. This will return
+	/// <c>null</c> when there are no cards remaining in the Deck.
+	/// </summary>
+	public Card Draw()
         {
             if (_topCard < 52) 
 		    {
@@ -76,6 +85,7 @@ namespace CardGames.GameLogic
 		
         }
 	}
+
 
 	#region Deck Unit Tests
 	#if DEBUG
@@ -118,5 +128,5 @@ namespace CardGames.GameLogic
 
 	#endif 
 	#endregion
-}
+
 
